@@ -3,12 +3,23 @@
 	"name": "colbe",
 	"compatibility_date": "2026-07-13",
 	"compatibility_flags": [
-		"nodejs_als"
+		"nodejs_als",
+		"nodejs_compat"
 	],
 	"main": ".svelte-kit/cloudflare/_worker.js",
 	"assets": {
 		"binding": "ASSETS",
 		"directory": ".svelte-kit/cloudflare"
+	},
+	"vars": {
+		"ORIGIN": "https://colbe.cc"
+	},
+	"secrets": {
+		"required": [
+			"DATABASE_URL",
+			"DATABASE_AUTH_TOKEN",
+			"BETTER_AUTH_SECRET"
+		]
 	},
 	"workers_dev": true,
 	"preview_urls": true
