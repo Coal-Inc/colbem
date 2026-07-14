@@ -1,3 +1,22 @@
-<h1>Welcome to your library project</h1>
-<p>Create your package using @sveltejs/package and preview/showcase your work with SvelteKit</p>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<!-- src/routes/+page.svelte -->
+<script lang="ts">
+	import Navbar from '$lib/components/marketing/Navbar.svelte';
+	import Hero from '$lib/components/marketing/Hero.svelte';
+	import QuickStart from '$lib/components/marketing/QuickStart.svelte';
+	import ValueProposition from '$lib/components/marketing/ValueProposition.svelte';
+	import CommunityGrid from '$lib/components/marketing/CommunityGrid.svelte';
+	import StylePreview from '$lib/components/marketing/StylePreview.svelte';
+	import Features from '$lib/components/marketing/Features.svelte';
+	import CTA from '$lib/components/marketing/CTA.svelte';
+	import Footer from '$lib/components/marketing/Footer.svelte';
+</script>
+
+<Navbar />
+<Hero />
+<QuickStart />
+<ValueProposition />
+<CommunityGrid />
+<StylePreview />
+<Features />
+<CTA />
+<Footer />
