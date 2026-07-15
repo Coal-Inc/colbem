@@ -39,7 +39,7 @@
 		</div>
 
 		<div class="mt-12 border-t border-white/10 pt-6 text-center text-xs text-zinc-600">
-			© {new Date().getFullYear()} Coal-Inc. All rights reserved.
+			© {new Date().getFullYear()} Coal Inc. All rights reserved.
 		</div>
 	</div>
 </footer>
