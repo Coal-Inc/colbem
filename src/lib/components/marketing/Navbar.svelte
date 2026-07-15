@@ -36,7 +36,7 @@
     </a>
 
     <div class="flex items-center lg:hidden">
-        <button onclick={() => (isOpen = true)} aria-label="Open menu" class="text-white">
+        <button type="button" onclick={() => (isOpen = true)} aria-label="Open menu" class="text-white">
             <List size={22} />
         </button>
 
@@ -50,14 +50,14 @@
                                 <img src="/thumbnail/Colbe.png" alt="Colbe" class="h-9 w-9 rounded-[15px]" />
                                 <span class="font-bold text-lg">Colbe</span>
                             </a>
-                            <Dialog.Close class="text-zinc-500 hover:text-white">
+                            <Dialog.Close type="button" aria-label="Close menu" class="text-zinc-500 hover:text-white">
                                 <X size={20} />
                             </Dialog.Close>
                         </div>
 
                         <div class="flex flex-col gap-1">
                             {#each routeList as { href, label } (href)}
-                                <a href={resolve('/') + href} onclick={() => (isOpen = false)} class="rounded-[10px] px-3 py-2 text-base text-zinc-300 hover:bg-white/5 hover:text-white">
+                                <a {href} onclick={() => (isOpen = false)} class="rounded-[10px] px-3 py-2 text-base text-zinc-300 hover:bg-white/5 hover:text-white">
                                     {label}
                                 </a>
                             {/each}
@@ -80,11 +80,11 @@
 
     <div class="hidden lg:flex items-center gap-1">
         <DropdownMenu.Root>
-            <DropdownMenu.Trigger class="rounded-[10px] px-3 py-2 text-base text-zinc-300 hover:bg-white/5 hover:text-white data-[state=open]:bg-white/5 data-[state=open]:text-white">
+            <DropdownMenu.Trigger type="button" class="rounded-[10px] px-3 py-2 text-base text-zinc-300 hover:bg-white/5 hover:text-white data-[state=open]:bg-white/5 data-[state=open]:text-white">
                 Features
             </DropdownMenu.Trigger>
             <DropdownMenu.Portal>
-                <DropdownMenu.Content class="z-50 w-110 rounded-[15px] bg-[#1a1720] p-3 shadow-xl" sideOffset={8}>
+                <DropdownMenu.Content class="z-50 w-[440px] rounded-[15px] bg-[#1a1720] p-3 shadow-xl" sideOffset={8}>
                     <div class="flex flex-col gap-1">
                         {#each featureList as { icon, title, description } (title)}
                             {@const Icon = icon}
@@ -104,7 +104,7 @@
         </DropdownMenu.Root>
 
         {#each routeList as { href, label } (href)}
-            <a href={resolve('/') + href} class="rounded-[10px] px-3 py-2 text-base text-zinc-300 hover:bg-white/5 hover:text-white">
+            <a {href} class="rounded-[10px] px-3 py-2 text-base text-zinc-300 hover:bg-white/5 hover:text-white">
                 {label}
             </a>
         {/each}

@@ -1,11 +1,12 @@
 <!-- src/lib/components/marketing/Footer.svelte -->
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { TwitterLogo, DiscordLogo, GithubLogo } from 'phosphor-svelte';
 
 	const columns = [
 		{ title: 'Product', links: [{ label: 'Features', href: '#features' }, { label: 'Pricing', href: '#pricing' }] },
-		{ title: 'Company', links: [{ label: 'About', href: '/about' }, { label: 'Careers', href: '/careers' }] },
-		{ title: 'Legal', links: [{ label: 'Privacy', href: '/privacy' }, { label: 'Terms', href: '/terms' }] }
+		{ title: 'Company', links: [{ label: 'About', href: resolve('/about') }, { label: 'Careers', href: resolve('/careers') }] },
+		{ title: 'Legal', links: [{ label: 'Privacy', href: resolve('/privacy') }, { label: 'Terms', href: resolve('/terms') }] }
 	];
 </script>
 
@@ -19,17 +20,17 @@
 				</div>
 				<p class="mt-3 text-sm text-zinc-500">Built like blocks.</p>
 				<div class="mt-4 flex gap-4">
-					<a href="https://twitter.com" class="text-zinc-500 hover:text-white"><TwitterLogo size={18} /></a>
-					<a href="https://discord.com" class="text-zinc-500 hover:text-white"><DiscordLogo size={18} /></a>
-					<a href="https://github.com/Coal-Inc" class="text-zinc-500 hover:text-white"><GithubLogo size={18} /></a>
+					<a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="text-zinc-500 hover:text-white"><TwitterLogo size={18} /></a>
+					<a href="https://discord.com" target="_blank" rel="noopener noreferrer" aria-label="Discord" class="text-zinc-500 hover:text-white"><DiscordLogo size={18} /></a>
+					<a href="https://github.com/Coal-Inc" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-zinc-500 hover:text-white"><GithubLogo size={18} /></a>
 				</div>
 			</div>
 
-			{#each columns as col}
+			{#each columns as col (col.title)}
 				<div>
 					<h4 class="text-sm font-semibold text-white">{col.title}</h4>
 					<ul class="mt-4 space-y-3">
-						{#each col.links as link}
+						{#each col.links as link (link.label)}
 							<li><a href={link.href} class="text-sm text-zinc-500 hover:text-white">{link.label}</a></li>
 						{/each}
 					</ul>
