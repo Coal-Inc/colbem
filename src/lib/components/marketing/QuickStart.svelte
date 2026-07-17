@@ -1,25 +1,39 @@
-<!-- src/lib/components/marketing/QuickStart.svelte -->
 <script lang="ts">
-	import { PlayCircle, ChatCircleDots, Phone, UsersThree } from 'phosphor-svelte';
+	import UserPlus from 'phosphor-svelte/lib/index.js';
+	import UsersThree from 'phosphor-svelte/lib/index.js';
+	import PaperPlaneTilt from 'phosphor-svelte/lib/index.js';
+
+	const steps = [
+		{ icon: UserPlus, title: 'Create your account', body: 'Sign up with your phone number in under a minute.' },
+		{ icon: UsersThree, title: 'Join or start a server', body: 'Pick a category, invite people, and set your roles.' },
+		{ icon: PaperPlaneTilt, title: 'Start talking', body: 'Message, call, or go live — it all works the moment you land.' }
+	];
 </script>
 
-<section class="bg-[#17141d] py-24">
-	<div class="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
-		<div class="order-2 md:order-1">
-			<h2 class="text-3xl font-bold text-white sm:text-4xl">Get set up in minutes</h2>
-			<p class="mt-4 text-zinc-400">
-				Create your account, snap together a server, and start talking. No configuration, no setup wizard — just Colbe.
-			</p>
-		</div>
-		<div class="order-1 md:order-2">
-			<div class="relative flex aspect-video items-center justify-center rounded-[15px] bg-white/5">
-				<PlayCircle size={56} class="text-blue-400" weight="fill" />
-				<div class="absolute bottom-4 left-4 flex gap-2">
-					<div class="flex h-9 w-9 items-center justify-center rounded-[15px] bg-white/10"><ChatCircleDots size={16} class="text-white" /></div>
-					<div class="flex h-9 w-9 items-center justify-center rounded-[15px] bg-white/10"><Phone size={16} class="text-white" /></div>
-					<div class="flex h-9 w-9 items-center justify-center rounded-[15px] bg-white/10"><UsersThree size={16} class="text-white" /></div>
+<section id="how-it-works" class="mx-auto w-[90%] max-w-7xl py-20">
+	<div class="mb-14 max-w-2xl">
+		<span
+			class="inline-flex items-center rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-1 text-xs font-medium uppercase tracking-wide text-blue-400"
+		>
+			How it works
+		</span>
+		<h2 class="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">Three steps in, no setup wizard.</h2>
+	</div>
+
+	<div class="grid gap-8 sm:grid-cols-3">
+		{#each steps as { icon, title, body }, i (title)}
+			{@const Icon = icon}
+			<div class="relative">
+				<div class="flex items-center gap-3">
+					<span class="font-mono text-sm text-blue-400">0{i + 1}</span>
+					<div class="h-px flex-1 bg-white/10"></div>
 				</div>
+				<div class="mt-4 flex h-10 w-10 items-center justify-center rounded-[10px] bg-blue-500/10">
+					<Icon size={20} class="text-blue-400" />
+				</div>
+				<h3 class="mt-4 text-lg font-semibold text-white">{title}</h3>
+				<p class="mt-2 text-sm leading-relaxed text-zinc-400">{body}</p>
 			</div>
-		</div>
+		{/each}
 	</div>
 </section>

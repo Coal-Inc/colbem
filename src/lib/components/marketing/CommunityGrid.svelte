@@ -1,45 +1,48 @@
-<!-- src/lib/components/marketing/CommunityGrid.svelte -->
 <script lang="ts">
-	import { Hash, SpeakerHigh } from 'phosphor-svelte';
+	import PaintBrush from 'phosphor-svelte/lib/index.js';
+	import GameController from 'phosphor-svelte/lib/index.js';
+	import Code from 'phosphor-svelte/lib/index.js';
+	import MusicNotes from 'phosphor-svelte/lib/index.js';
+	import BookOpen from 'phosphor-svelte/lib/index.js';
+	import Barbell from 'phosphor-svelte/lib/index.js';
 
-	let showGrid = $state(false);
-	const channels = [
-		{ id: 'general', name: 'general', type: 'text' },
-		{ id: 'intros', name: 'introductions', type: 'text' },
-		{ id: 'off-topic', name: 'off-topic', type: 'text' },
-		{ id: 'announcements', name: 'announcements', type: 'text' },
-		{ id: 'voice-lounge', name: 'voice-lounge', type: 'voice' },
-		{ id: 'memes', name: 'memes', type: 'text' }
+	// Illustrative categories — not real communities or user data.
+	const categories = [
+		{ icon: PaintBrush, name: 'Design & Art' },
+		{ icon: GameController, name: 'Gaming' },
+		{ icon: Code, name: 'Dev & Tech' },
+		{ icon: MusicNotes, name: 'Music' },
+		{ icon: BookOpen, name: 'Study Groups' },
+		{ icon: Barbell, name: 'Fitness' }
 	];
 </script>
 
-<section class="bg-[#17141d] py-24">
-	<div class="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
-		<div>
-			<h2 class="text-3xl font-bold text-white sm:text-4xl">Servers that organize themselves</h2>
-			<p class="mt-4 text-zinc-400">
-				Snap channels into place, assign roles, and keep every conversation exactly where it belongs.
-			</p>
-			<button
-				onclick={() => (showGrid = !showGrid)}
-				class="mt-6 rounded-full bg-white/5 px-5 py-2 text-sm text-zinc-300 hover:bg-white/10 hover:text-white"
+<section class="mx-auto w-[90%] max-w-7xl py-20">
+	<div class="mb-10 max-w-2xl">
+		<span
+			class="inline-flex items-center rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-1 text-xs font-medium uppercase tracking-wide text-blue-400"
+		>
+			Communities
+		</span>
+		<h2 class="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+			A server for whatever you're into.
+		</h2>
+		<p class="mt-3 text-zinc-400">Channels, roles, and permissions ready out of the box — pick a category to start.</p>
+	</div>
+
+	<div class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+		{#each categories as { icon, name } (name)}
+			{@const Icon = icon}
+			<div
+				class="group flex flex-col items-start gap-3 rounded-[15px] border border-white/5 bg-[#1a1720] p-5 transition hover:border-blue-500/30"
 			>
-				{showGrid ? 'Hide' : 'Show'} channel layout
-			</button>
-		</div>
-		<div class="rounded-[15px] bg-white/5 p-6">
-			<div class="grid grid-cols-2 gap-3">
-				{#each channels as ch (ch.id)}
-					<div class="relative flex items-center gap-2 rounded-[15px] bg-white/5 p-3 {showGrid ? 'ring-1 ring-blue-400/40' : ''}">
-						{#if ch.type === 'voice'}
-							<SpeakerHigh size={16} class="text-blue-400" />
-						{:else}
-							<Hash size={16} class="text-blue-400" />
-						{/if}
-						<span class="text-sm text-zinc-300">{ch.name}</span>
-					</div>
-				{/each}
+				<div
+					class="flex h-10 w-10 items-center justify-center rounded-[10px] bg-blue-500/10 transition group-hover:bg-blue-500/20"
+				>
+					<Icon size={20} class="text-blue-400" />
+				</div>
+				<p class="font-semibold text-white">{name}</p>
 			</div>
-		</div>
+		{/each}
 	</div>
 </section>

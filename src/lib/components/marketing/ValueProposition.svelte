@@ -1,39 +1,49 @@
-<!-- src/lib/components/marketing/ValueProposition.svelte -->
 <script lang="ts">
-	import { ChatCircleDots, Phone, UsersThree, Broadcast, ShieldCheck, Lightning, Hash, Microphone } from 'phosphor-svelte';
+	import ChatCircleDots from 'phosphor-svelte/lib/index.js';
+	import Phone from 'phosphor-svelte/lib/index.js';
+	import UsersThree from 'phosphor-svelte/lib/index.js';
 
-	const pills = [
-		{ id: 'dms', icon: ChatCircleDots, label: 'DMs' },
-		{ id: 'voice', icon: Phone, label: 'Voice calls' },
-		{ id: 'hd', icon: Microphone, label: 'HD audio' },
-		{ id: 'servers', icon: UsersThree, label: 'Servers' },
-		{ id: 'channels', icon: Hash, label: 'Channels' },
-		{ id: 'status', icon: Broadcast, label: 'Status & reels' },
-		{ id: 'encryption', icon: ShieldCheck, label: 'Encryption' },
-		{ id: 'sync', icon: Lightning, label: 'Real-time sync' }
+	const values = [
+		{
+			icon: ChatCircleDots,
+			title: 'One thread, not three apps',
+			body: 'DMs, group chats, and channels live in the same place, so a conversation never has to jump apps to keep going.'
+		},
+		{
+			icon: Phone,
+			title: 'Calls that pick up where chat left off',
+			body: 'Jump from a message straight into a call without losing the context that got you there.'
+		},
+		{
+			icon: UsersThree,
+			title: 'Communities with real structure',
+			body: 'Channels, roles, and permissions that scale from a five-person group chat to a five-thousand-person server.'
+		}
 	];
 </script>
 
-<section class="bg-[#121016] py-24">
-	<div class="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
-		<div class="flex items-center justify-center">
-			<div class="grid grid-cols-3 gap-3">
-				{#each pills.slice(0, 6) as p (p.id)}
-					{@const Icon = p.icon}
-					<div class="flex h-20 w-20 items-center justify-center rounded-[15px] bg-white/5">
-						<Icon size={26} class="text-blue-400" />
-					</div>
-				{/each}
+<section class="mx-auto w-[90%] max-w-7xl py-20">
+	<div class="mb-14 max-w-2xl">
+		<span
+			class="inline-flex items-center rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-1 text-xs font-medium uppercase tracking-wide text-blue-400"
+		>
+			Why Colbe
+		</span>
+		<h2 class="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+			Built like blocks, not bolted together.
+		</h2>
+	</div>
+
+	<div class="grid gap-6 sm:grid-cols-3">
+		{#each values as { icon, title, body } (title)}
+			{@const Icon = icon}
+			<div class="rounded-[15px] border border-white/5 bg-[#1a1720] p-6">
+				<div class="flex h-10 w-10 items-center justify-center rounded-[10px] bg-blue-500/10">
+					<Icon size={20} class="text-blue-400" />
+				</div>
+				<h3 class="mt-4 text-lg font-semibold text-white">{title}</h3>
+				<p class="mt-2 text-sm leading-relaxed text-zinc-400">{body}</p>
 			</div>
-		</div>
-		<div>
-			<h2 class="text-3xl font-bold text-white sm:text-4xl">Everything you need to talk, call, and build a community</h2>
-			<p class="mt-4 text-zinc-400">Every feature has been built for one purpose: making conversation feel effortless.</p>
-			<div class="mt-8 flex flex-wrap gap-3">
-				{#each pills as p (p.id)}
-					<span class="rounded-full bg-white/5 px-4 py-2 text-sm text-zinc-300">{p.label}</span>
-				{/each}
-			</div>
-		</div>
+		{/each}
 	</div>
 </section>
