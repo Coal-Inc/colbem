@@ -1,9 +1,5 @@
 <script lang="ts">
-	import ChatCircleDots from 'phosphor-svelte/lib/index.js';
-	import VideoCamera from 'phosphor-svelte/lib/index.js';
-	import Broadcast from 'phosphor-svelte/lib/index.js';
-	import ShieldCheck from 'phosphor-svelte/lib/index.js';
-	import BellSimple from 'phosphor-svelte/lib/index.js';
+	import { ChatCircleDots, VideoCamera, Broadcast, ShieldCheck, BellSimple } from 'phosphor-svelte';
 	import RoundCarousel from '$lib/components/shared/Roundcarousel.svelte';
 
 	// TODO(isaac): swap these for real product screenshots once captured.

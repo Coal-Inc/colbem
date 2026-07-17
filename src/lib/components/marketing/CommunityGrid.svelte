@@ -1,10 +1,5 @@
 <script lang="ts">
-	import PaintBrush from 'phosphor-svelte/lib/index.js';
-	import GameController from 'phosphor-svelte/lib/index.js';
-	import Code from 'phosphor-svelte/lib/index.js';
-	import MusicNotes from 'phosphor-svelte/lib/index.js';
-	import BookOpen from 'phosphor-svelte/lib/index.js';
-	import Barbell from 'phosphor-svelte/lib/index.js';
+	import { PaintBrush, GameController, Code, MusicNotes, BookOpen, Barbell } from 'phosphor-svelte';
 
 	// Illustrative categories — not real communities or user data.
 	const categories = [

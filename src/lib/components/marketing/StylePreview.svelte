@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Moon from 'phosphor-svelte/lib/index.js';
+	import { Moon } from 'phosphor-svelte';
 </script>
 
 <section id="style" class="mx-auto w-[90%] max-w-7xl py-20">

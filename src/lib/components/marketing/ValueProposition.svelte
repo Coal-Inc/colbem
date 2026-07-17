@@ -1,7 +1,5 @@
 <script lang="ts">
-	import ChatCircleDots from 'phosphor-svelte/lib/index.js';
-	import Phone from 'phosphor-svelte/lib/index.js';
-	import UsersThree from 'phosphor-svelte/lib/index.js';
+	import { ChatCircleDots, Phone, UsersThree } from 'phosphor-svelte';
 
 	const values = [
 		{

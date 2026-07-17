@@ -1,7 +1,5 @@
 <script lang="ts">
-	import UserPlus from 'phosphor-svelte/lib/index.js';
-	import UsersThree from 'phosphor-svelte/lib/index.js';
-	import PaperPlaneTilt from 'phosphor-svelte/lib/index.js';
+	import { UserPlus, UsersThree, PaperPlaneTilt } from 'phosphor-svelte';
 
 	const steps = [
 		{ icon: UserPlus, title: 'Create your account', body: 'Sign up with your phone number in under a minute.' },
