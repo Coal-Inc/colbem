@@ -4,15 +4,7 @@
 	import { Sparkle, ArrowRight, Phone, Users, ChatCircle } from 'phosphor-svelte';
 </script>
 
-<section class="relative w-full pt-40 pb-24 px-6 overflow-hidden bg-background">
-	<div
-		class="pointer-events-none absolute inset-0 opacity-[0.08]"
-		style="background-image: radial-gradient(circle, var(--foreground) 1px, transparent 1px); background-size: 24px 24px;"
-	></div>
-	<div
-		class="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-primary opacity-20 blur-[120px]"
-	></div>
-
+<section class="relative w-full pt-40 pb-24 px-6 bg-background">
 	<div class="relative max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
 		<div class="flex flex-col gap-6 text-left">
 			<span class="inline-flex w-fit items-center gap-2 px-4 py-1.5 text-sm text-primary bg-secondary rounded-[15px] border border-border">
