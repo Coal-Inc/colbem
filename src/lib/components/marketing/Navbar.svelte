@@ -30,7 +30,7 @@
 <header class="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4">
 	<nav class={navClass}>
 		<a href={resolve('/')} class="flex items-center gap-2">
-			<span class="relative flex h-8 w-8 items-center justify-center rounded-[15px] bg-blue-500/10">
+			<span class="/favicon.svg">
 				<span class="h-2 w-2 rounded-full bg-blue-400"></span>
 			</span>
 			<span class="text-[15px] font-semibold tracking-tight text-white">Colbe</span>
