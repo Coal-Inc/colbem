@@ -1,37 +1,52 @@
+<!-- src/routes/how-it-works/+page.svelte -->
 <script lang="ts">
-	import { UserPlus, UsersThree, PaperPlaneTilt } from 'phosphor-svelte';
+	import { Plug, ArrowsLeftRight, Broadcast, ShieldCheck } from 'phosphor-svelte';
 
-	const steps = [
-		{ icon: UserPlus, title: 'Create your account', body: 'Sign up with your phone number in under a minute.' },
-		{ icon: UsersThree, title: 'Join or start a server', body: 'Pick a category, invite people, and set your roles.' },
-		{ icon: PaperPlaneTilt, title: 'Start talking', body: 'Message, call, or go live — it all works the moment you land.' }
+	const sections = [
+		{
+			icon: Plug,
+			title: 'Persistent connection',
+			body: 'When you open Colbe, your client opens a WebSocket connection to our edge servers and keeps it alive. This replaces constant polling — instead of asking "any new messages?" every few seconds, the server pushes events to you the instant they happen.'
+		},
+		{
+			icon: ArrowsLeftRight,
+			title: 'Message routing',
+			body: 'Sending a message writes it to the server, which fans it out over open WebSocket connections to every other member currently connected to that conversation. Members who are offline receive it on reconnect, pulled from storage rather than re-sent live.'
+		},
+		{
+			icon: Broadcast,
+			title: 'Calls and voice',
+			body: 'Voice and video use WebRTC for peer-to-peer media streams where possible, falling back to a relay server (TURN) when a direct connection can\'t be established — common on strict NATs or corporate networks. Signaling (who\'s calling whom, negotiating connection details) still runs over the same WebSocket used for messaging.'
+		},
+		{
+			icon: ShieldCheck,
+			title: 'Communities and permissions',
+			body: 'Each community is a set of channels with role-based permissions checked server-side on every action — posting, joining a call, managing members. The client never enforces permissions on its own; it just reflects what the server allows.'
+		}
 	];
 </script>
 
-<section id="how-it-works" class="mx-auto w-[90%] max-w-7xl py-20">
-	<div class="mb-14 max-w-2xl">
-		<span
-			class="inline-flex items-center rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-1 text-xs font-medium uppercase tracking-wide text-blue-400"
-		>
-			How it works
-		</span>
-		<h2 class="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">Three steps in, no setup wizard.</h2>
-	</div>
+<section class="w-full pt-40 pb-24 px-6 bg-background">
+	<div class="max-w-3xl mx-auto flex flex-col gap-16">
+		<div class="flex flex-col gap-4">
+			<h1 class="text-4xl font-bold text-foreground">How Colbe works</h1>
+			<p class="text-lg text-muted-foreground">
+				A look at what actually happens under the hood when you send a message, join a call, or open a community.
+			</p>
+		</div>
 
-	<div class="grid gap-8 sm:grid-cols-3">
-		{#each steps as { icon, title, body }, i (title)}
-			{@const Icon = icon}
-			<div class="relative">
-				<div class="flex items-center gap-3">
-					<span class="font-mono text-sm text-blue-400">0{i + 1}</span>
-					<div class="h-px flex-1 bg-white/10"></div>
+		<div class="flex flex-col gap-10">
+			{#each sections as section (section.title)}
+				<div class="flex gap-5">
+					<div class="shrink-0 w-11 h-11 rounded-[15px] bg-secondary border border-border flex items-center justify-center">
+						<section.icon size={20} class="text-primary" />
+					</div>
+					<div class="flex flex-col gap-2">
+						<h2 class="text-xl font-semibold text-foreground">{section.title}</h2>
+						<p class="text-muted-foreground leading-relaxed">{section.body}</p>
+					</div>
 				</div>
-				<div class="mt-4 flex h-10 w-10 items-center justify-center rounded-[10px] bg-blue-500/10">
-					<Icon size={20} class="text-blue-400" />
-				</div>
-				<h3 class="mt-4 text-lg font-semibold text-white">{title}</h3>
-				<p class="mt-2 text-sm leading-relaxed text-zinc-400">{body}</p>
-			</div>
-		{/each}
+			{/each}
+		</div>
 	</div>
 </section>
