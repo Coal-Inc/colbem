@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.svg" />
@@ -28,8 +28,13 @@
 				align-items: center;
 				justify-content: center;
 				gap: 1rem;
-				background: #0b0b0b;
+				background: oklch(0.23 0.004 106);
 				z-index: 9999;
+				transition: opacity 0.4s ease;
+			}
+			#app-splash.splash-hidden {
+				opacity: 0;
+				pointer-events: none;
 			}
 			#app-splash img {
 				width: 64px;
@@ -38,7 +43,7 @@
 			#app-splash p {
 				font-family: 'Builder Sans', sans-serif;
 				font-weight: 700;
-				color: #ffffff;
+				color: oklch(0.97 0 0);
 				margin: 0;
 			}
 		</style>
@@ -56,7 +61,10 @@
 		<div style="display: contents">%sveltekit.body%</div>
 		<script>
 			window.hideAppSplash = () => {
-				document.getElementById('app-splash')?.remove();
+				const el = document.getElementById('app-splash');
+				if (!el) return;
+				el.classList.add('splash-hidden');
+				setTimeout(() => el.remove(), 400);
 			};
 		</script>
 	</body>

@@ -16,6 +16,7 @@
 	onMount(() => {
 		const timer = setTimeout(() => {
 			ready = true;
+			window.hideAppSplash?.();
 		}, 15500);
 
 		return () => clearTimeout(timer);
