@@ -23,6 +23,10 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Colbe</title>
+</svelte:head>
+
 {#if ready}
 	<Navbar />
 	<Hero />

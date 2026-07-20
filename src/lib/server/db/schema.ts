@@ -80,10 +80,21 @@ export const statusPings = sqliteTable('status_pings', {
 	checkedAt: integer('checked_at', { mode: 'timestamp' }).notNull()
 });
 
+// ── Servers ──────────────────────────────────────────────────
+
+export const servers = sqliteTable('servers', {
+	id: text('id').primaryKey(),
+	name: text('name').notNull(),
+	iconUrl: text('icon_url'),
+	ownerId: text('owner_id').notNull().references(() => user.id),
+	createdAt: integer('created_at', { mode: 'timestamp' }).notNull()
+});
+
 // ── Chat / Calls ──────────────────────────────────────────────
 
 export const channels = sqliteTable('channels', {
 	id: text('id').primaryKey(),
+	serverId: text('server_id').references(() => servers.id, { onDelete: 'cascade' }),
 	name: text('name').notNull(),
 	type: text('type', { enum: ['text', 'voice'] }).notNull().default('text'),
 	createdBy: text('created_by').notNull().references(() => user.id),
