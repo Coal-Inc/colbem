@@ -42,7 +42,7 @@
 		</div>
 
 		<div class="mt-12 border-t border-border pt-6 text-center text-xs text-muted-foreground">
-			© {new Date().getFullYear()} Colbem Inc. All rights reserved.
+			© {new Date().getFullYear()} Colbem Studio. All rights reserved.
 		</div>
 	</div>
 </footer>
