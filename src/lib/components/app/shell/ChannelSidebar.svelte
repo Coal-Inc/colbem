@@ -2,9 +2,20 @@
 <script lang="ts">
 	import { page } from '$app/state';
 	import { Hash, SpeakerHigh } from 'phosphor-svelte';
+	import UserWidget from '../UserWidget.svelte';
 	import type { ChannelSummary } from './index.js';
 
-	let { channels, serverName, serverId }: { channels: ChannelSummary[]; serverName: string; serverId: string } = $props();
+	let {
+		channels,
+		serverName,
+		serverId,
+		user
+	}: {
+		channels: ChannelSummary[];
+		serverName: string;
+		serverId: string;
+		user: { name: string; username?: string | null; image?: string | null };
+	} = $props();
 </script>
 
 <aside class="flex w-60 shrink-0 flex-col border-r border-border bg-card">
@@ -26,4 +37,8 @@
 			</a>
 		{/each}
 	</nav>
+
+	<div class="border-t border-border p-2">
+		<UserWidget {user} />
+	</div>
 </aside>

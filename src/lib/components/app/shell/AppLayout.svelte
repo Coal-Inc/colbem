@@ -13,6 +13,7 @@
 		serverName,
 		channelTitle,
 		members,
+		user,
 		children
 	}: {
 		servers: ServerSummary[];
@@ -21,6 +22,7 @@
 		serverName: string;
 		channelTitle: string;
 		members: MemberSummary[];
+		user: { name: string; username?: string | null; image?: string | null };
 		children: import('svelte').Snippet;
 	} = $props();
 
@@ -29,7 +31,7 @@
 
 <div class="flex h-screen overflow-hidden bg-background">
 	<ServerRail {servers} {activeServerId} />
-	<ChannelSidebar {channels} {serverName} />
+	<ChannelSidebar {channels} {serverName} serverId={activeServerId ?? ''} {user} />
 
 	<div class="flex flex-1 flex-col overflow-hidden">
 		<TopBar title={channelTitle} scrollContainer={scrollEl} />
